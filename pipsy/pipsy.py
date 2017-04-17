@@ -185,6 +185,7 @@ def _display_table(rows, show_notices=False):
     for row in rows:
         row['versions'] = row['versions'] if 'versions' in row else ''
         row['notices'] = row['notices'] if 'notices' in row else ''
+        row['latest'] = row['latest'] if 'latest' in row and row['latest'] is not None else 'unknown'
         sys.stdout.write(row_format.format(
             *(row[column] for column in columns)))
     sys.stdout.write('\n')
