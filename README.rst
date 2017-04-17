@@ -4,7 +4,7 @@ pipsy
 .. image:: https://travis-ci.org/tpyo/pipsy.svg?branch=master
     :target: https://travis-ci.org/tpyo/pipsy
 
-A tool to check for Python package updates and security-related changes.
+A Python 3 tool to check for pypi package updates and security-related changes
 
 Installation
 ^^^^^^^^^^^^^^^^^^
