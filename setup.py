@@ -23,7 +23,7 @@ setup(
     },
     python_requires='!=3.0.*,!=3.1.*,!=3.2.*,>=3.3',
     extras_require={
-        'testing': ['pytest'],
+        'testing': ['pytest', 'mock'],
     },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
