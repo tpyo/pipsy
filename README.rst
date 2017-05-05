@@ -18,13 +18,13 @@ Usage
 
 .. code::
 
-    pipsy
+    pipsy -a
 
 **Check specific packages**
 
 .. code::
 
-    pipsy Django requests pip
+    pipsy -a Django requests pip
 
 **Check change logs**
 
