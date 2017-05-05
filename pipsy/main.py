@@ -13,8 +13,10 @@ def main():
                         help='Check changelogs for possible security notices')
     parser.add_argument('-j', '--output-json', dest='output_json', action='store_true', default=False,
                         help='Output results as JSON')
+    parser.add_argument('-a', '--show-all', dest='show_all', action='store_true', default=False,
+                        help='Show all packages, not just updates')
     args = parser.parse_args()
-    pipsy.show_updates(changelog_scan=args.check_changelogs,
+    pipsy.show_updates(changelog_scan=args.check_changelogs, all_packages=args.show_all,
                        json_out=args.output_json, filter_packages=args.packages)
 
 

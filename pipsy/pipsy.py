@@ -119,7 +119,7 @@ def get_updates(package, changelog_scan=True):
     return ret
 
 
-def show_updates(changelog_scan=True, json_out=False, filter_packages=[]):
+def show_updates(changelog_scan=True, all_packages=False, json_out=False, filter_packages=[]):
     packages = sorted(pip.get_installed_distributions(),
                       key=lambda pkg: pkg.project_name.lower())
 
@@ -144,7 +144,7 @@ def show_updates(changelog_scan=True, json_out=False, filter_packages=[]):
     if json_out:
         sys.stdout.write(json.dumps(updates, indent=4))
     else:
-        _display_table(updates, show_notices=changelog_scan)
+        _display_table(updates, show_notices=changelog_scan, show_all_packages=all_packages)
 
 
 def _string_contains_security_keywords(string):
@@ -166,7 +166,7 @@ def _get_column_lengths(rows, labels):
     return lens
 
 
-def _display_table(rows, show_notices=False):
+def _display_table(rows, show_notices=False, show_all_packages=False):
     lens = _get_column_lengths(rows, DISPLAY_TABLE_LABELS)
 
     columns = ['package', 'installed', 'latest', 'versions', ]
@@ -186,8 +186,9 @@ def _display_table(rows, show_notices=False):
         row['versions'] = row['versions'] if 'versions' in row else ''
         row['notices'] = row['notices'] if 'notices' in row else ''
         row['latest'] = row['latest'] if 'latest' in row and row['latest'] is not None else 'unknown'
-        sys.stdout.write(row_format.format(
-            *(row[column] for column in columns)))
+        if show_all_packages or len(row['versions']) > 0:
+            sys.stdout.write(row_format.format(
+                *(row[column] for column in columns)))
     sys.stdout.write('\n')
 
 
