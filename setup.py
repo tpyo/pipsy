@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pipsy',
-    version="0.1.1",
+    version="0.1.2",
     description='Shows updates for installed packages',
     long_description='Shows available updates and security notices for installed packages',
     author='Donovan Schönknecht',
